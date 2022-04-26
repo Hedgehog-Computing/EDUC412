@@ -17,7 +17,7 @@ function iif(b,a,c){
     )
     J = b.length
     console.log("b = " + b)
-    theta = range(-3,3,0.1)
+    theta = range(-3,3,0.01)
     console.log("a = " + a)
     i = zeros(theta.rows, theta.cols)
     for (let j=0;j<J;j++){
