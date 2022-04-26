@@ -13,7 +13,7 @@ To start using `icc/lif/tcc/tif` functions, please click [**this link**](https:/
 
 Here are some examples of using `icc/lif/tcc/tif` functions (no installation or configuration required):
 
-### Item Information Function (IIF) `icc(b,a,c)`
+### Item Characteristic Curve (ICC) `icc(b,a,c)`
 
 ```js
 *import EDUC412:icc,iif, tcc, tif
