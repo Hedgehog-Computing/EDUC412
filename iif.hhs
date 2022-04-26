@@ -1,0 +1,43 @@
+function iif(b,a,c){
+    console.log("START")
+    function reciprocal(matrixX) {
+        let result = zeros(matrixX.rows, matrixX.cols);
+        for (i=0;i<result.rows;i++){
+            for (j=0;j<result.cols;j++){
+                result.val[i][j]= 1.0/matrixX.val[i][j]
+            }
+        }
+        return result;
+    }   
+    function matSQRT(matA){
+        return sqrt(matA)
+    }
+    markdown (
+        "# Item Information Function (IIF)"
+    )
+    J = b.length
+    console.log("b = " + b)
+    theta = range(-3,3,0.1)
+    console.log("a = " + a)
+    i = zeros(theta.rows, theta.cols)
+    for (let j=0;j<J;j++){
+        markdown("iterator j = " + j)
+        aj = a[j]
+        bj = b[j]
+        Pstar = 1 * reciprocal( 1 + exp(-1.702 * (aj) * (theta - bj)))
+        
+        P = Pstar;
+        console.log("aj = " + aj)
+        temp = ( P.dotMultiply(1.0-P))
+        aj2 =  aj*aj
+        ii = aj * aj * temp 
+        console.log(Pstar.toString())
+        console.log(JSON.stringify(temp))
+        console.log("aj = " + aj)
+        console.log("ii:" + JSON.stringify(ii))
+        se = sqrt(reciprocal(ii))
+        console.log(se.toString())
+        plot2D(theta, ii)
+        plot2D(theta, se)
+    }
+}

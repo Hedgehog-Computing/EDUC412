@@ -1,0 +1,21 @@
+function tcc(b,a,c){
+    function reciprocal(matrixX) {
+        let result = zeros(matrixX.rows, matrixX.cols);
+        for (i=0;i<result.rows;i++){
+            for (j=0;j<result.cols;j++){
+                result.val[i][j]= 1.0/matrixX.val[i][j]
+            }
+        }
+        return result;
+    }   
+
+    markdown("# Test Characteristic Curve (TCC)")
+    J = b.length;
+    theta = range(-3,3,0.01)
+    ts = zeros(theta.rows, theta.cols)
+    for (j=0;j<J;j++) {
+        P = c[j] + (1-c[j]) * reciprocal(1 + exp(-1 * a[j] * (theta - b[j])))
+        ts = ts + P
+    }
+    plot2D(theta, ts)
+}

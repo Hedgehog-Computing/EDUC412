@@ -1,0 +1,53 @@
+function tif(b,a,c){
+    function reciprocal(matrixX) {
+        let result = zeros(matrixX.rows, matrixX.cols);
+        for (let i=0;i<result.rows;i++){
+            for (let j=0;j<result.cols;j++){
+                result.val[i][j]= 1.0/matrixX.val[i][j]
+            }
+        }
+        return result;
+    }   
+    markdown("# Test Information Function (TIF)")
+    console.log("###START###")
+    console.log(a)
+    J = b.length
+    theta = range(-3,3,0.01)
+    //ii = zeros(theta.rows, theta.cols)
+    
+    i = zeros(theta.rows, theta.cols)
+    se = zeros(theta.rows, theta.cols)
+    for (let j=0;j<5;j++){
+        console.log(" ***** j = " + j)
+        console.log("current aj is " + a[j])
+        aj = a[j]
+        aj2 = a[j]
+        bj = b[j]
+        cj = c[j]
+        console.log("current aj is " + aj)
+        console.log("before j is " + j)
+        res = 1 + exp(-1.702 * (aj) * (theta - (bj)))
+        console.log("middle j is " + j)
+        Pstar = reciprocal(1 + res)
+        console.log("after j is " + j)
+        console.log("current aj is " + aj)
+        res = (1 + exp(-1.702*aj*(theta-bj)))
+        res = reciprocal(res.clone())
+        //console.log(res.toString())
+        Pstar = res
+        //console.log("Pstar" + Pstar)
+        P = cj + (1-cj) * Pstar
+        //console.log("P" + P)
+        res2 = P.dotMultiply(1.0 - P)
+        //console.log(res2.toString())
+        console.log("current aj is " + aj)
+        ii = aj2 * aj2 * res2
+        //console.log("ii: " + ii)
+        i = i + ii
+        //console.log("i:" + i)
+        se = sqrt(reciprocal(i))
+        console.log("current j is " + j)
+    }
+    plot2D(theta, i)
+    plot2D(theta, se)
+}
