@@ -58,7 +58,7 @@ b = [-1.0, -0.5, 0, 0.5, 1.0]
 a = [2.0, 1.5, 1.5, 1.5, 2.0]
 c = [0,0,0,0,0]
 
-tic(b,a,c)
+tif(b,a,c)
 ```
 
 You can copy and paste the above codes or uncomment any of the functions to use them in the Hedgehog Lab playground.
